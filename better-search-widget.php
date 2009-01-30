@@ -3,7 +3,7 @@
  * Plugin Name: Better Search Widget
  * Plugin URI: http://jamessocol.com/projects/better-search-widget.php
  * Description: Creates a more flexible search widget, with a title and everything. Lets you customize the title, button value, and field length.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: James Socol
  * Author URI: http://jamessocol.com/
  */
@@ -38,8 +38,8 @@ function js_better_search_widget ( $argv )
 {
     extract($argv);
     $options = get_option('js_better_search_widget');
-    $title = $options['title'] ? $options['title'] : 'Search';
-    $button = $options['button'] ? $options['button'] : 'Search';
+    $title = $options['title'] ? $options['title'] : __('Search',$js_bsw_domain);
+    $button = $options['button'] ? $options['button'] : __('Search',$js_bsw_domain);
     $length = ctype_digit($options['length']) ? $options['length'] : 15;
 ?>
     <?php echo $before_widget; ?>

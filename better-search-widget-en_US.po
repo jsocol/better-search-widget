@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Better Search Widget\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:22-0500\n"
+"POT-Creation-Date: 2009-01-30 16:47-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: James Socol <socoljam@msu.edu>\n"
 "Language-Team: James Socol <me@jamessocol.com>\n"
@@ -15,6 +15,13 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: C:\\Documents and Settings\\James\\Desktop\\better-search-widget\n"
+
+#: C:\Documents
+#: and
+#: Settings\James\Desktop\better-search-widget/better-search-widget.php:41
+#: Settings\James\Desktop\better-search-widget/better-search-widget.php:42
+msgid "Search"
+msgstr "Search"
 
 #: C:\Documents
 #: and
