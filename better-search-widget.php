@@ -3,7 +3,7 @@
  * Plugin Name: Better Search Widget
  * Plugin URI: http://jamessocol.com/projects/better-search-widget.php
  * Description: Creates a more flexible search widget, with a title and everything. Lets you customize the title, button value, and field length.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: James Socol
  * Author URI: http://jamessocol.com/
  */
@@ -31,6 +31,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
+ 
+$js_bsw_domain = 'js_bsw_domain';
  
 function js_better_search_widget ( $argv )
 {
@@ -69,9 +71,9 @@ function js_better_search_widget_control ()
     $button = $options['button'];
     $length = $options['length'];
 ?>
-        <p><label for="better-search-title"><?php _e('Title:'); ?> <input type="text" style="width: 250px;" id="better-search-title" name="better-search-title" value="<?php echo $title; ?>" /></label></p>
-	<p><label for="better-search-button"><?php _e('Search Button:'); ?> <input type="text" style="width: 250px;" id="better-search-button" name="better-search-button" value="<?php echo $button; ?>" /></label></p>
-	<p><label for="better-search-length"><?php _e('Search Box Size:'); ?> <input type="text" style="width: 30px;" id="better-search-length" name="better-search-length" value="<?php echo $length; ?>" /></label></p>
+        <p><label for="better-search-title"><?php _e('Title:',$js_bsw_domain); ?> <input type="text" style="width: 250px;" id="better-search-title" name="better-search-title" value="<?php echo $title; ?>" /></label></p>
+	<p><label for="better-search-button"><?php _e('Search Button:',$js_bsw_domain); ?> <input type="text" style="width: 250px;" id="better-search-button" name="better-search-button" value="<?php echo $button; ?>" /></label></p>
+	<p><label for="better-search-length"><?php _e('Search Box Size:',$js_bsw_domain); ?> <input type="text" style="width: 30px;" id="better-search-length" name="better-search-length" value="<?php echo $length; ?>" /></label></p>
         <input type="hidden" id="better-search-submit" name="better-search-submit" value="1" />
 <?php
 }
@@ -84,6 +86,7 @@ function js_better_search_widget_init ()
     }
 }
 
+load_plugin_textdomain($js_bsw_domain, PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)), dirname(plugin_basename(__FILE__)));
 add_action('widgets_init', 'js_better_search_widget_init');
 
 ?>
