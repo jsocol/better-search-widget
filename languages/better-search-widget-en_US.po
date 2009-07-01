@@ -44,21 +44,21 @@ msgstr "Title:"
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:105
 msgid "form_button"
-msgstr "Search Button Text:"
+msgstr "Button Text:"
 
 # Label for the search field size form field.
 #: C:\Documents
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:107
 msgid "form_size"
-msgstr "Search Field Size:"
+msgstr "Field Size:"
 
 # Label for the search field default form field.
 #: C:\Documents
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:109
 msgid "form_default"
-msgstr "Search Field Default:"
+msgstr "Field Default:"
 
 # Question of whether to use JavaScript events to clear or replace the default text.
 #: C:\Documents

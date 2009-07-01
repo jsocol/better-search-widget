@@ -42,14 +42,14 @@ msgstr "Titre:"
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:105
 msgid "form_button"
-msgstr "Texte du bouton de soumission:"
+msgstr "Texte du bouton:"
 
 # Label for the search field size form field.
 #: C:\Documents
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:107
 msgid "form_size"
-msgstr "Taille du champ de saisie:"
+msgstr "Taille du champ:"
 
 # Label for the search form default form field.
 #: C:\Documents
@@ -87,7 +87,7 @@ msgstr "Non"
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:137
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:138
 msgid "widget_name"
-msgstr "Meillure Widget de Recherche"
+msgstr "Meilleur Widget de Recherche"
 
 # Appears on the widget admin page in WordPress 2.8+.
 #: C:\Documents
