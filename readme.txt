@@ -28,6 +28,14 @@ search field length, and button value.
 The built-in Search widget sucks. It doesn't follow the format of the other
 widgets and allows no customization.
 
+== Changelog ==
+
+__1.1.0__
+* Added optional default value to the search widget.
+* Added optional `onfocus` and `onblur` events to clear or fill the field
+  when default/empty.
+* Updated localization files and added de_DE.
+
 == License ==
 
 Copyright 2008  James Socol  (email: me@jamessocol.com)
