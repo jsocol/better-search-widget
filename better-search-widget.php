@@ -35,7 +35,7 @@ THE SOFTWARE.
 
 */
  
-$js_bsw_domain = 'js_bsw_domain';
+$js_bsw_domain = 'better-search-widget';
 
 /**
  * The actual widget.
@@ -45,6 +45,10 @@ $js_bsw_domain = 'js_bsw_domain';
  */
 function js_better_search_widget ( $argv )
 {
+	global $js_bsw_domain;
+
+	error_reporting(E_ALL);
+
     extract($argv);
     $options = get_option('js_better_search_widget');
     
@@ -52,11 +56,11 @@ function js_better_search_widget ( $argv )
     $button  = $options['button'] ? $options['button'] : __('default_button',$js_bsw_domain);
     $length  = ctype_digit($options['length']) ? $options['length'] : 15;
     
-    $default = $options['default'] ? add_slashes($options['default']) : '';
+    $default = $options['default'] ? addslashes($options['default']) : '';
     $script  = $default ? $options['script'] : false;
 ?>
     <?php echo $before_widget; ?>
-        <?php echo $before_title.$title.$after_title; ?>
+        <?php echo $before_title,$title,$after_title; ?>
 	<form id="better-search-form" method="get" action="<?php bloginfo('home'); ?>">
 	<div>
 		<input type="text" name="s" id="s" size="<?php echo $length; ?>" <?php if($script) echo "value='$default'"; ?> <?php if($script) echo "onfocus='if(\"$default\"==this.value)this.value=\"\";' onblur='if(\"\"==this.value)this.value=\"$default\";'"; ?> />
@@ -96,13 +100,13 @@ function js_better_search_widget_control ()
     $default = $options['default'];
 	$script  = $options['script']; 
 ?>
-		<p><label for="better-search-title"><?php _e('form_title',$js_bsw_domain); ?> <input type="text" style="width: 250px;" id="better-search-title" name="better-search-title" value="<?php echo $title; ?>" /></label></p>
+		<p><label for="better-search-title"><?php _e('form_title',$js_bsw_domain); ?> <input type="text" style="width: 90%;" id="better-search-title" name="better-search-title" value="<?php echo $title; ?>" /></label></p>
 		
-		<p><label for="better-search-button"><?php _e('form_button',$js_bsw_domain); ?> <input type="text" style="width: 250px;" id="better-search-button" name="better-search-button" value="<?php echo $button; ?>" /></label></p>
+		<p><label for="better-search-button"><?php _e('form_button',$js_bsw_domain); ?> <input type="text" style="width: 90%;" id="better-search-button" name="better-search-button" value="<?php echo $button; ?>" /></label></p>
 		
 		<p><label for="better-search-length"><?php _e('form_size',$js_bsw_domain); ?> <input type="text" style="width: 30px;" id="better-search-length" name="better-search-length" value="<?php echo $length; ?>" /></label></p>
 		
-		<p><label for="better-search-default"><?php _e('form_default',$js_bsw_domain); ?> <input type="text" style="width: 250px;" id="better-search-default" name="better-search-default" value="<?php echo $default; ?>" /></label></p>
+		<p><label for="better-search-default"><?php _e('form_default',$js_bsw_domain); ?> <input type="text" style="width: 90%;" id="better-search-default" name="better-search-default" value="<?php echo $default; ?>" /></label></p>
 		
 		<p><?php _e('form_script',$js_bsw_domain); ?>
 			<label for="better-search-script-yes" style="display: block; padding-left: 15px"><input type="radio" name="better-search-script" id="better-search-script-yes" value="1" <?php if(1==$script) echo "checked='checked'"?> /> <?php _e('form_script_on',$js_bsw_domain); ?></label>
@@ -120,9 +124,16 @@ function js_better_search_widget_init ()
 {
 	global $js_bsw_domain;
 
-	load_plugin_textdomain($js_bsw_domain, PLUGINDIR.'/'.dirname(plugin_basename(__FILE__)), dirname(plugin_basename(__FILE__)));
-	
-    if ( function_exists('register_sidebar_widget') ) {
+	$plugin_dir = basename(dirname(__FILE__));
+
+	load_plugin_textdomain($js_bsw_domain, 'wp-content/plugins/'.$plugin_dir,$plugin_dir);
+
+	if ( function_exists('wp_register_sidebar_widget') ) {
+
+		wp_register_sidebar_widget('better-search-widget', __('widget_name',$js_bsw_domain), 'js_better_search_widget', array('description'=>__('widget_description',$js_bsw_domain)), 'js_better_search_widget');
+		wp_register_widget_control('better-search-widget', __('widget_name',$js_bsw_domain), 'js_better_search_widget_control', array('description'=>__('widget_description',$js_bsw_domain)));
+
+    } else if ( function_exists('register_sidebar_widget') ) {
         register_sidebar_widget(__('widget_name',$js_bsw_domain), "js_better_search_widget");
         register_widget_control(__('widget_name',$js_bsw_domain), 'js_better_search_widget_control');
     }
