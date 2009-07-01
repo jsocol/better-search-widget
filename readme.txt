@@ -34,7 +34,7 @@ __1.1.0__
 * Added optional default value to the search widget.
 * Added optional `onfocus` and `onblur` events to clear or fill the field
   when default/empty.
-* Updated localization files and added de_DE.
+* Updated localization strings, files and added .pot, de_DE and fr_FR.
 
 == License ==
 

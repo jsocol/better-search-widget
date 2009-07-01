@@ -9,6 +9,8 @@
  * 
  * Translations:
  *     de_DE: Marco Jung <info@mjml.de>
+ *     en_US: James Socol <me@jamessocol.com>
+ *     fr_FR: James Socol <me@jamessocol.com>
  */
 
 /*
@@ -46,8 +48,6 @@ $js_bsw_domain = 'better-search-widget';
 function js_better_search_widget ( $argv )
 {
 	global $js_bsw_domain;
-
-	error_reporting(E_ALL);
 
     extract($argv);
     $options = get_option('js_better_search_widget');
@@ -126,7 +126,7 @@ function js_better_search_widget_init ()
 
 	$plugin_dir = basename(dirname(__FILE__));
 
-	load_plugin_textdomain($js_bsw_domain, 'wp-content/plugins/'.$plugin_dir,$plugin_dir);
+	load_plugin_textdomain($js_bsw_domain, 'wp-content/plugins/'.$plugin_dir.'/languages',$plugin_dir.'/languages');
 
 	if ( function_exists('wp_register_sidebar_widget') ) {
 
