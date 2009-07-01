@@ -37,7 +37,7 @@ msgstr "Search"
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:103
 msgid "form_title"
-msgstr "Widget Title:"
+msgstr "Title:"
 
 # Label for the button value form field.
 #: C:\Documents
@@ -53,7 +53,7 @@ msgstr "Search Button Text:"
 msgid "form_size"
 msgstr "Search Field Size:"
 
-# Label for the search form default form field.
+# Label for the search field default form field.
 #: C:\Documents
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:109

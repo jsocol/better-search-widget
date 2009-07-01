@@ -35,7 +35,7 @@ msgstr "Recherche"
 #: and
 #: Settings\James\Desktop\better-search-widget/better-search-widget.php:103
 msgid "form_title"
-msgstr "Title du Widget:"
+msgstr "Titre:"
 
 # Label for the button value form field.
 #: C:\Documents
