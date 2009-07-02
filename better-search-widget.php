@@ -52,7 +52,7 @@ function js_better_search_widget ( $argv )
     extract($argv);
     $options = get_option('js_better_search_widget');
     
-    $title   = $options['title'] ? $options['title'] : __('default_title',$js_bsw_domain);
+    $title   = $options['title']/* ? $options['title'] : __('default_title',$js_bsw_domain)*/;
     $button  = $options['button'] ? $options['button'] : __('default_button',$js_bsw_domain);
     $length  = ctype_digit($options['length']) ? $options['length'] : 15;
     
@@ -63,7 +63,7 @@ function js_better_search_widget ( $argv )
 	$blur    = $options['blur'] ? $options['blur'] : '#999';
 ?>
     <?php echo $before_widget; ?>
-        <?php echo $before_title,$title,$after_title; ?>
+        <?php if($title) echo $before_title,$title,$after_title; ?>
 	<form id="better-search-form" method="get" action="<?php bloginfo('home'); ?>">
 	<div>
 		<input type="text" name="s" id="s" size="<?php echo $length; ?>" <?php if($_GET['s']) echo "value='{$_GET['s']}'"; else if($default) echo "value='$default'"; ?> <?php if($script) echo "onfocus='this.style.color=\"$focus\";if(\"$default\"==this.value)this.value=\"\";' onblur='if(\"\"==this.value){this.style.color=\"$blur\";this.value=\"$default\";}' style='color:$blur'"; ?> />
@@ -138,16 +138,12 @@ function js_better_search_widget_control ()
 function js_better_search_widget_init ()
 {
 	global $js_bsw_domain;
-
 	$plugin_dir = basename(dirname(__FILE__));
-
 	load_plugin_textdomain($js_bsw_domain, 'wp-content/plugins/'.$plugin_dir.'/languages',$plugin_dir.'/languages');
 
 	if ( function_exists('wp_register_sidebar_widget') ) {
-
 		wp_register_sidebar_widget('better-search-widget', __('widget_name',$js_bsw_domain), 'js_better_search_widget', array('description'=>__('widget_description',$js_bsw_domain)), 'js_better_search_widget');
 		wp_register_widget_control('better-search-widget', __('widget_name',$js_bsw_domain), 'js_better_search_widget_control', array('description'=>__('widget_description',$js_bsw_domain)));
-
     } else if ( function_exists('register_sidebar_widget') ) {
         register_sidebar_widget(__('widget_name',$js_bsw_domain), "js_better_search_widget");
         register_widget_control(__('widget_name',$js_bsw_domain), 'js_better_search_widget_control');
