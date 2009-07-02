@@ -66,12 +66,12 @@ msgstr "No"
 # Label for the focused color form field.
 #: better-search-widget.php:123
 msgid "form_focus_color"
-msgstr "Focused Color:"
+msgstr "Focused Colour:"
 
 # Label for the blur color form field.
 #: better-search-widget.php:127
 msgid "form_blur_color"
-msgstr "Blurred Color:"
+msgstr "Blurred Colour:"
 
 # Appears in the admin list of widgets.
 #: better-search-widget.php:148
