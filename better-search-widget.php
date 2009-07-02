@@ -58,12 +58,15 @@ function js_better_search_widget ( $argv )
     
     $default = $options['default'] ? addslashes($options['default']) : '';
     $script  = $default ? $options['script'] : false;
+
+	$focus   = $options['focus'] ? $options['focus'] : '#000';
+	$blur    = $options['blur'] ? $options['blur'] : '#999';
 ?>
     <?php echo $before_widget; ?>
         <?php echo $before_title,$title,$after_title; ?>
 	<form id="better-search-form" method="get" action="<?php bloginfo('home'); ?>">
 	<div>
-		<input type="text" name="s" id="s" size="<?php echo $length; ?>" <?php if($script) echo "value='$default'"; ?> <?php if($script) echo "onfocus='if(\"$default\"==this.value)this.value=\"\";' onblur='if(\"\"==this.value)this.value=\"$default\";'"; ?> />
+		<input type="text" name="s" id="s" size="<?php echo $length; ?>" <?php if($_GET['s']) echo "value='{$_GET['s']}'"; else if($default) echo "value='$default'"; ?> <?php if($script) echo "onfocus='this.style.color=\"$focus\";if(\"$default\"==this.value)this.value=\"\";' onblur='if(\"\"==this.value){this.style.color=\"$blur\";this.value=\"$default\";}' style='color:$blur'"; ?> />
 		<input type="submit" value="<?php echo attribute_escape($button); ?>" />
 	</div>
 	</form>
@@ -88,6 +91,8 @@ function js_better_search_widget_control ()
 		$newoptions['length']  = preg_replace('/\D/', '', $_POST['better-search-length']);
 		$newoptions['default'] = strip_tags(stripslashes($_POST['better-search-default']));
 		$newoptions['script']  = (1==$_POST['better-search-script'])?1:0;
+		$newoptions['focus']   = htmlentities(strip_tags($_POST['better-search-focus']));
+		$newoptions['blur']    = htmlentities(strip_tags($_POST['better-search-blur']));
     }
 
     if ( $options != $newoptions ) {
@@ -98,7 +103,9 @@ function js_better_search_widget_control ()
     $button  = $options['button'] ? $options['button'] : __('default_button', $js_bsw_domain);
     $length  = $options['length'];
     $default = $options['default'];
-	$script  = $options['script']; 
+	$script  = $options['script'];
+	$focus   = $options['focus'];
+	$blur    = $options['blur'];
 ?>
 		<p><label for="better-search-title"><?php _e('form_title',$js_bsw_domain); ?> <input type="text" style="width: 90%;" id="better-search-title" name="better-search-title" value="<?php echo $title; ?>" /></label></p>
 		
@@ -112,6 +119,14 @@ function js_better_search_widget_control ()
 			<label for="better-search-script-yes" style="display: block; padding-left: 15px"><input type="radio" name="better-search-script" id="better-search-script-yes" value="1" <?php if(1==$script) echo "checked='checked'"?> /> <?php _e('form_script_on',$js_bsw_domain); ?></label>
 			<label for="better-search-script-no" style="display: block; padding-left: 15px"><input type="radio" name="better-search-script" id="better-search-script-no" value="0" <?php if(1!=$script) echo "checked='checked'"?> /> <?php _e('form_script_off',$js_bsw_domain); ?></label>
 		</p>
+
+		<p><label for="better-search-focus"><?php _e('form_focus_color',$js_bsw_domain); ?>
+			<input type="text" size="7" name="better-search-focus" id="better-search-focus" value="<?php echo $focus; ?>" onchange="this.style.color=this.value" style="color:<?php echo $focus; ?>" />
+		</label></p>
+
+		<p><label for="better-search-blur"><?php _e('form_blur_color',$js_bsw_domain); ?>
+			<input type="text" size="7" name="better-search-blur" id="better-search-blur" value="<?php echo $blur; ?>" onchange="this.style.color=this.value" style="color:<?php echo $blur; ?>" />
+		</label></p>
 		
 		<input type="hidden" id="better-search-submit" name="better-search-submit" value="1" />
 <?php
