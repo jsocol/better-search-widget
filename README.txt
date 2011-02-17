@@ -3,8 +3,8 @@ Contributors: James Socol
 Plugin link: http://jamessocol.com/projects/better-search-widget.php
 Author link: http://jamessocol.com/
 Requires at least: 2.3.1
-Tested up to: 2.7
-Stable tag: 1.0.2
+Tested up to: 3.0.5
+Stable tag: 1.1.0
 
 Adds a customizable search widget allowing you to change the widget title,
 search field length, and button value.
